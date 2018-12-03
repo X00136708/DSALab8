@@ -10,8 +10,9 @@ int main() {
 	list.push(1);
 	list.push(3);
 	list.push(5);
-	list.push(7);
-	list.pop();
-	cout << list.top();
-	// Error on line 63 + 64 on the ListOfDoubles.cpp. Not sure what they are
+	list.push(7); // 1, 3, 5, 7 are added
+	list.pop(); //7 is deleted
+	
+	cout << list.top() << endl; //5 is now at the top
+	system("pause");
 }

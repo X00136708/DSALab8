@@ -1,18 +1,17 @@
-#include "listofdoubles.h"
+#include "ListOfDoubles.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
-DoubleListNode::DoubleListNode() {
+ListOfDoubles::ListOfDoubles() {
 
 }
-DoubleListNode::DoubleListNode(double val)
-	:next(NULL), theValue(val)
-{}
 
-ListOfDoubles::ListOfDoubles()
-	: head(NULL)
-{}
+ListOfDoubles::~ListOfDoubles() {
+	while (head != NULL) {
+		pop(); //get rid of everything.
+	}
+}
 
 struct ListOfDoubles::Item {
 	Item(const double& d) : val(d), next(nullptr)
@@ -25,7 +24,7 @@ struct ListOfDoubles::Item {
 void ListOfDoubles::push(const double& val) {
 	if (head == NULL) {
 		head = new Item(val);
-		cout << "Stack created";
+		cout << "Stack created" << endl;
 	}
 	else {
 		Item* tmp = head;
@@ -48,21 +47,19 @@ void ListOfDoubles::pop() {
 }
 
 double ListOfDoubles::top() {
-	if (head != NULL) {
+	
 		return head->val;
-	}
-	else {
-		cout << "Stack is empty";
-	}
+	
+	
 }
 
 
 
-ostream& operator<<(ostream& inputStream, const ListOfDoubles& a) {
+ostream& operator<<(ostream& inputStream, ListOfDoubles& a) {
 	while (a.head != NULL) {
 		inputStream << "Value: " << a.top() << endl;
 		a.pop();
-	} //Not sure about these errors
+	} 
 		return inputStream;
 	
 
